@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkInProgress</title>
+    <link href="./style.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="blue-screen">
+        <div class="nav">
+            <div class="left-side"></div>
+            <div class="hour"></div>
+            <div class="right-side">
+                <img class="connexion" src="./images/wi-fi.png" alt="wi-fi-logo"/>
+                <img class="turn-off" src="./images/turn-off.png" alt="turn-off-logo"/>
+            </div>           
+        </div>
+        <!-- Left side of the screen  -->
+        <div class="icon-left">
+            <div class="organize-left">
+                <img class="folder" src="./images/folder.png" alt="folder"/>
+                <p class="titles">Folders</p>
+            </div>
+
+            <div class="organize-left">
+                <img class="console" src="./images/terminal.png" alt="command-console"/>
+                <p class="titles">Console</p>
+            </div>
+
+            <div class="organize-left">
+                <img class="bin" src="./images/bin.png" alt="paper-bin"/>
+                <p class="titles">Bin</p>
+            </div>
+            
+            <div class="organize-left">
+                <img class="mail" src="./images/mail.png" alt="mail"/>
+                <p class="titles">Mail</p>
+            </div>
+
+            <div class="organize-left internet-segment">
+                <img class="internet" src="./images/internet.png" alt="internet"/>
+                <p class="titles">Internet</p>
+            </div>
+        </div>
+        
+        <!-- Right side of the screen  -->
+        <div class="icon-right">
+            <div class="organize-right">
+                <img class="notes" src="./images/notes.png" alt="notes"/>
+                <p class="title-notes">Notes.txt</p>
+            </div>
+        </div>   
+    </div>
+
+    <div class="narrators-text"></div>
+    
+    <div class="hotbar"></div>
+
+    <script src="folder.js"></script>
+    <script src="console.js"></script>
+    <script src="notes.js"></script>
+    <script src="mail.js"></script>
+    <script src="internet.js"></script>
+    <script src="crypted.js"></script>
+    <script src="bin.js"></script>
+    <script src="encryptionkey.js"></script>
+
+    <script>
+        // "Small widget displaying the time."
+        function startTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            m = checkTime(m);
+            document.querySelector('.hour').innerHTML = h + ":" + m;
+            var t = setTimeout(startTime, 500);
+        }
+            function checkTime(i) {
+            if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+            return i;
+        }
+        startTime();
+
+        
+        // Variable to track the current z-index.
+        let currentZIndex = 1;
+
+        folderWindow.addEventListener("click", function() {
+            // Increases the z-index to bring this window to the forefront.
+            folderWindow.style.zIndex = currentZIndex++;
+        });
+
+        consoleWindow.addEventListener("click", function() {
+            // Increases the z-index to bring this window to the forefront.
+            consoleWindow.style.zIndex = currentZIndex++;
+        });
+
+        binWindow.addEventListener("click", function() {
+            // Increases the z-index to bring this window to the forefront.
+            binWindow.style.zIndex = currentZIndex++;
+        });
+
+        notesWindow.addEventListener("click", function() {
+            // Increases the z-index to bring this window to the forefront.
+            notesWindow.style.zIndex = currentZIndex++;
+        });
+
+        mailWindow.addEventListener("click", function() {
+            // Increases the z-index to bring this window to the forefront.
+            mailWindow.style.zIndex = currentZIndex++;
+        });
+
+        internetWindow.addEventListener("click", function() {
+            // Increases the z-index to bring this window to the forefront.
+            internetWindow.style.zIndex = currentZIndex++;
+        });
+
+        cryptedImgWindow.addEventListener("click", function() {
+            // Increases the z-index to bring this window to the forefront.
+            cryptedImgWindow.style.zIndex = currentZIndex++;
+        });
+
+        keyImgWindow.addEventListener("click", function() {
+            // Increases the z-index to bring this window to the forefront.
+            keyImgWindow.style.zIndex = currentZIndex++;
+        });
+
+    </script>
+</body>
+</html>

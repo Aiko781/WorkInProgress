@@ -126,6 +126,21 @@
             keyImgWindow.style.zIndex = currentZIndex++;
         });
 
+
+
+
+        const endWindow = document.createElement("div");
+
+        // Open the window on icon click.
+        ritualButton.addEventListener("click", function() {
+            if (document.querySelector(".ritual-button")) {
+                endWindow.classList.add('end-window');
+                document.querySelector(".blue-screen").appendChild(endWindow);
+                document.querySelector(".nav").style.display = "none";
+                document.querySelector(".end-window").textContent = "Thanks for trying my small project !";
+            }
+        });
+
     </script>
 </body>
 </html>

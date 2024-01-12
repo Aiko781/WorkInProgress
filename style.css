@@ -978,3 +978,18 @@ body {
     justify-content: center;
     /* cursor: pointer; */
 }
+
+.end-window {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: #202020;
+    font-family: Handjet, sans-serif;
+    font-size: 45px;
+    color: aliceblue;
+    z-index: 10;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

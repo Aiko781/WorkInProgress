@@ -987,7 +987,7 @@ body {
     font-family: Handjet, sans-serif;
     font-size: 45px;
     color: aliceblue;
-    z-index: 10;
+    z-index: 10000;
     text-align: center;
     display: flex;
     align-items: center;

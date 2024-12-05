@@ -170,8 +170,11 @@ mailClose.addEventListener("click", function() {
     mailWindow.remove();
 });
 
-// Affichage d'un texte de prévention au clic
-mailContent.addEventListener("click", function() {
+
+let typingInProgress = false; // Variable de contrôle
+let currentTimeout; // Variable pour stocker les ID de `setTimeout`
+
+mailContent.addEventListener("click", function () {
     // Augmente le z-index pour placer cette fenêtre au premier plan
     const textContainer = document.querySelector(".narrators-text");
     const textContent = "I think that I don't want to open that.";
@@ -179,34 +182,36 @@ mailContent.addEventListener("click", function() {
     let index = 0;
     const speed = 30; // Delay between letters in milliseconds
 
+    // Si une écriture est déjà en cours, on la stoppe
+    if (typingInProgress) {
+        clearTimeout(currentTimeout); // Annule les appels `setTimeout` en attente
+        textContainer.textContent = ""; // Réinitialise le texte affiché
+        typingInProgress = false; // Réinitialise la variable de contrôle
+    }
+
+    typingInProgress = true; // Indique qu'une nouvelle écriture commence
+
     function typeText() {
+        if (!typingInProgress) return; // Si l'écriture a été arrêtée, on sort
+
         if (index < textContent.length) {
             textContainer.textContent += textContent.charAt(index);
             index++;
-            setTimeout(typeText, speed);
+            currentTimeout = setTimeout(typeText, speed); // Stocke l'ID de `setTimeout`
+        } else {
+            currentTimeout = setTimeout(textRemove, 3000); // Efface le texte après 3 secondes
+            typingInProgress = setTimeout(false, 3000) // Écriture terminée
         }
     }
 
     function textRemove() {
-        if (index == textContent.length) {
-            textContainer.textContent = ""
-        }
-        setTimeout(textRemove, 3000);
+        textContainer.textContent = "";
     }
 
-    setTimeout(typeText, 0.2); // Start typing after a 0.2-second delay
-
-    setTimeout(textRemove, 0.01); // Start deleting after a 5-second delay
-
-
-    // /!\ "Not implemented"
-    // setTimeout(textAudio, 4); // Start playing sound after a 4-second delay
-
-    // function textAudio() {
-    //     var audio = new Audio('./sound/virusWarning.m4a');
-    //     audio.play();
-    // }
+    typeText(); // Lancer l'écriture
 });
+
+
 
 mailContent1.addEventListener("click", function() {
     // Masque tous les contenus de mail
